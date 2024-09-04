@@ -1,5 +1,6 @@
 {
   "recommendations": [
-    "tsandall.opa"
+    "tsandall.opa",
+    "editorconfig.editorconfig"
   ]
 }
