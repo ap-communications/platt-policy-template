@@ -1,0 +1,46 @@
+# macOS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Node version directives
+.nvmrc
+
+# dotenv environment variables file
+.env
+.env.test
+# direnv environment variables file
+.envrc
+
+.node-version
+.tool-versions
+coverage
+
+# Temporary change files created by Vim
+*.swp
+
+# Local configuration files
+*.local.yaml
+
+# Sensitive credentials
+*-credentials.yaml
+
+# vscode database functionality support files
+*.session.sql
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+HELP.md
+
+# for test purposes
+__blobstorage__
+__queuestorage__
