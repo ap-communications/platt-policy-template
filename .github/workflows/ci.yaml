@@ -1,0 +1,32 @@
+name: CI
+on:
+  pull_request_target:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Continuous Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        if: github.event_name == 'pull_request_target'
+        with:
+          ref: "refs/pull/${{ github.event.number }}/merge"
+
+      - uses: actions/checkout@v4
+        if: github.event_name != 'pull_request_target'
+
+      - name: Set up Regal
+        uses: StyraInc/setup-regal@v1
+        with:
+          version: latest
+
+      - name: format
+        run: opa fmt policies --fail --diff
+      - name: lint
+        run: regal lint --format=github policies
+      - name: check
+        run: opa check policies
+      - name: test
+        run: opa test -v policies
