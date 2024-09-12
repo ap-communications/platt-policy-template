@@ -17,6 +17,11 @@ jobs:
       - uses: actions/checkout@v4
         if: github.event_name != 'pull_request_target'
 
+      - name: Setup OPA
+        uses: open-policy-agent/setup-opa@v2
+        with:
+          version: latest
+
       - name: Set up Regal
         uses: StyraInc/setup-regal@v1
         with:
