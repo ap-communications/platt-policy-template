@@ -1,0 +1,6 @@
+rules:
+  bugs:
+    leaked-internal-reference:
+      ignore:
+        files:
+          - "*_test.rego"

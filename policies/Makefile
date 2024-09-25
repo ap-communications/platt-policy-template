@@ -1,10 +1,6 @@
 .PHONY: check check lint test testRbac
 
-checkAll:
-	make fmt
-	make check
-	make lint
-	make test
+checkAll: fmt check lint test
 
 check:
 	@opa check .

@@ -28,10 +28,12 @@ jobs:
           version: latest
 
       - name: format
-        run: opa fmt policies --fail --diff
-      - name: lint
-        run: regal lint --format=github policies
+        run: |
+          opa fmt policies --fail --diff
+          opa fmt samples --fail --diff
       - name: check
-        run: opa check policies
+        run: opa check policies samples
+      - name: lint
+        run: regal lint --format=github policies samples
       - name: test
-        run: opa test -v policies
+        run: opa test -v policies samples
