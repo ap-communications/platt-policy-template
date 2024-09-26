@@ -24,6 +24,45 @@ test_result_conditional if {
 	}
 }
 
+test_condition_any_of if {
+	condition1 = {
+		"resourceType": "catalog-entity",
+		"rule": "HAS_LABEL",
+		"params": {"label": "test-label"},
+	}
+	condition2 = {
+		"resourceType": "catalog-entity",
+		"rule": "IS_ENTITY_OWNER",
+		"params": {"claims": ["test-claim-1", "test-claim-2"]},
+	}
+	children := [condition1, condition2]
+	global.condition_any_of(children) == {"anyOf": children}
+}
+
+test_condition_all_of if {
+	condition1 = {
+		"resourceType": "catalog-entity",
+		"rule": "HAS_LABEL",
+		"params": {"label": "test-label"},
+	}
+	condition2 = {
+		"resourceType": "catalog-entity",
+		"rule": "IS_ENTITY_OWNER",
+		"params": {"claims": ["test-claim-1", "test-claim-2"]},
+	}
+	children := [condition1, condition2]
+	global.condition_all_of(children) == {"allOf": children}
+}
+
+test_condition_not if {
+	condition = {
+		"resourceType": "catalog-entity",
+		"rule": "HAS_LABEL",
+		"params": {"label": "test-label"},
+	}
+	global.condition_not(condition) == {"not": condition}
+}
+
 # test for aggregate_conditional_decisions
 test_aggregate_conditional_decisions_none if {
 	not global.aggregate_conditional_decisions([]) # decision is not defined
@@ -66,7 +105,7 @@ test_aggreate_conditional_decisions_multiple if {
 	global.aggregate_conditional_decisions(results) == global.conditional(
 		"catalog",
 		"catalog-entity",
-		{"anyOf": sort([condition1, condition2])},
+		global.condition_any_of(sort([condition1, condition2])),
 	)
 }
 
@@ -92,7 +131,7 @@ test_aggreate_conditional_decisions_multiple_with_dups if {
 	global.aggregate_conditional_decisions(results) == global.conditional(
 		"catalog",
 		"catalog-entity",
-		{"anyOf": sort([condition1, condition2])},
+		global.condition_any_of(sort([condition1, condition2])),
 	)
 }
 
@@ -176,7 +215,7 @@ test_reduce_conditional_decisions_multiple if {
 	global._reduce_conditional_decisions("pluginId", "res-type", [condition1, condition2]) == global.conditional(
 		"pluginId",
 		"res-type",
-		{"anyOf": [condition1, condition2]},
+		global.condition_any_of([condition1, condition2]),
 	)
 }
 
