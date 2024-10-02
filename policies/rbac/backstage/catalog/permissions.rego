@@ -23,7 +23,7 @@ entity_permissions := [
 	entity_refresh_permission,
 ]
 
-locatoin_permissions := [
+location_permissions := [
 	location_create_permission,
 	location_read_permission,
 	location_delete_permission,
@@ -31,7 +31,7 @@ locatoin_permissions := [
 
 permissions := array.concat(
 	entity_permissions,
-	locatoin_permissions,
+	location_permissions,
 )
 
 read_permissions := [
