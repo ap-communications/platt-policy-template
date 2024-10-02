@@ -1,40 +1,36 @@
-# ポリシー定義ユースケース１
+# Policy definitions : Usecase 1
 
-ここでは次のようなポリシー定義をすることを想定します。
+We assume the following policy definition in this case.
 
 ![usecase 1 image](./usecase1.drawio.png)
 
-## ロール
+## Role
 
-###  管理者ロール
+We have three types of roles.
 
-Backstageのすべての操作権限を持つユーザーロールとします。
-ここでは `administrators` グループに属するユーザーの場合を管理者とし、権限を許可します。
+###  Administration role
 
-### 外部ベンダーロール
+Users in the `administrators` group have all permissions granted.
 
-特定の操作のみ許可するロールとします。
-例えば組織外の外部ベンダーユーザーなどの場合の想定です。
+### External vendor role
 
-このユースケースでは`Vendor X` グループを外部ベンダーユーザーとし、以下の権限を許可します。
+Users in the 'Vendor X' group have pecific permisions:
 
-- catalogデータの場合、`Team A` に属するcatalogの参照権限を許可します。作成・削除は許可しません。
-- scaffolderの操作は許可しません。
-- その他未知の操作があった場合も許可しません。
+- Users can read catalog entities that are owned by `Team A`.
+- Users are not allowed any other operations including using scaffolders.
+
+Users in the 'Vendor Y' group have different permissions:
+
+- Users can create and read catalog entities that are owned by `Team B`, but they are not allowed to delete them.
+- Users are not allowed any other operations including using scaffolders.
 
 
-また特殊な例として `Vendor Y` を設定しています。この例では以下の権限を許可します。
+### Default role
 
-- catalogデータの場合、catalogの作成権限および`Team B` に属するcatalogの参照権限を許可します。削除は許可しません。
-- scaffolderの操作を許可します。
-- その他未知の操作があった場合も許可しません。
 
-### デフォルトロール
+All other users has the default role:
 
-特に指定のない場合の一般ユーザーロールとします。
-
-このユースケースでは以下のように定義します。
-
-- 全データの参照および作成を許可
-- catalogデータの場合、データのオーナー（またはオーナーグループに属する）ユーザーの場合は削除を許可する
-- scaffolderのすべての操作を許可する
+- Users can create and read all catalog entities.
+- Users can delete the catalog entities that they own.
+- Users are not allowed to execute all scaffolder operations.
+- User are not allowed any other (unknown) operations.
