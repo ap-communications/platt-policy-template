@@ -3,6 +3,9 @@ package rbac_policy
 import data.rbac.backstage.global
 import rego.v1
 
+# METADATA
+# description: This policy is used to make a decision based on the roles defined in the policy.
+# entrypoint: true
 decision := global.result_allow if {
 	# some of the roles may allow the decision
 	some role in data.rbac_policy.roles
