@@ -13,7 +13,7 @@ test_user_is_conditionals_with_catalog_read_permissions if {
 	}
 }
 
-test_user_is_conditionals_with_catalog_write_permissions if {
+test_user_is_deny_with_catalog_write_permissions if {
 	identity := test_utils.user_identity("vender_x_test_user", ["group:default/VendorX"])
 	every permission in catalog.write_permissions {
 		rbac_policy.decision == global.result_deny with input as test_utils.create_input(permission, identity)
