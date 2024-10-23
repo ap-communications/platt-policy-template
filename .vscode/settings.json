@@ -1,0 +1,7 @@
+{
+  "editor.tabSize": 2,
+  "[makefile]": {
+    "editor.insertSpaces": false,
+    "editor.useTabStops": true
+  }
+}
