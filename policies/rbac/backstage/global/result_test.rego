@@ -89,12 +89,12 @@ test_aggreate_conditional_decisions_multiple if {
 		"rule": "HAS_LABEL",
 		"params": {"label": "test-label"},
 	}
-	decision1 := global.conditional("catalog", "catalog-entity", condition1)
 	condition2 = {
 		"resourceType": "catalog-entity",
 		"rule": "IS_ENTITY_OWNER",
 		"params": {"claims": ["test-claim-1", "test-claim-2"]},
 	}
+	decision1 := global.conditional("catalog", "catalog-entity", condition1)
 	decision2 := global.conditional("catalog", "catalog-entity", condition2)
 	results := [
 		{"decision": {"result": "ALLOW"}},
@@ -115,12 +115,12 @@ test_aggreate_conditional_decisions_multiple_with_dups if {
 		"rule": "HAS_LABEL",
 		"params": {"label": "test-label"},
 	}
-	decision1 := global.conditional("catalog", "catalog-entity", condition1)
 	condition2 = {
 		"resourceType": "catalog-entity",
 		"rule": "IS_ENTITY_OWNER",
 		"params": {"claims": ["test-claim-1", "test-claim-2"]},
 	}
+	decision1 := global.conditional("catalog", "catalog-entity", condition1)
 	decision2 := global.conditional("catalog", "catalog-entity", condition2)
 	results := [
 		{"decision": {"result": "ALLOW"}},
@@ -166,12 +166,12 @@ test_filter_conditional_decisions_contains_multiple if {
 		"rule": "HAS_LABEL",
 		"params": {"label": "test-label"},
 	}
-	decision1 := global.conditional("catalog", "catalog-entity", condition1)
 	condition2 = {
 		"resourceType": "catalog-entity",
 		"rule": "IS_ENTITY_OWNER",
 		"params": {"claims": ["test-claim-1", "test-claim-2"]},
 	}
+	decision1 := global.conditional("catalog", "catalog-entity", condition1)
 	decision2 := global.conditional("catalog", "catalog-entity", condition2)
 	results := [
 		{"decision": {"result": "ALLOW"}},
