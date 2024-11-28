@@ -14,6 +14,8 @@ task_create_permission := "scaffolder.task.create"
 
 task_cancel_permission := "scaffolder.task.cancel"
 
+template_management_permission := "scaffolder.template.management"
+
 action_permissions := [action_execute_permission]
 
 template_permissions := [
@@ -27,10 +29,16 @@ task_permissons := [
 	task_cancel_permission,
 ]
 
-permissions := array.concat(
-	action_permissions,
-	array.concat(
-		template_permissions,
-		task_permissons,
-	),
-)
+permissions := [
+	# action_permissions
+	action_execute_permission,
+	# template_permissions
+	template_parameter_read_permission,
+	template_step_read_permission,
+	# task_permissons
+	task_read_permission,
+	task_create_permission,
+	task_cancel_permission,
+	# management permissions
+	template_management_permission,
+]
