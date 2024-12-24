@@ -1,6 +1,5 @@
 package rbac_policy.defaults_test
 
-import data.rbac.backstage.global
 import data.rbac.backstage.test_utils
 import data.rbac_policy.defaults
 import rego.v1
