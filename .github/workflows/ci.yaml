@@ -2,6 +2,8 @@ name: CI
 on:
   pull_request_target:
   workflow_dispatch:
+  schedule:
+    - cron:  '0 0 * * 4'
 
 jobs:
   build:
