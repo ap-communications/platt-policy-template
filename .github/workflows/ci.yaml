@@ -1,6 +1,6 @@
 name: CI
 on:
-  pull_request_target:
+  pull_request:
   workflow_dispatch:
   schedule:
     - cron:  '0 0 * * 4'
@@ -12,12 +12,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        if: github.event_name == 'pull_request_target'
-        with:
-          ref: "refs/pull/${{ github.event.number }}/merge"
-
-      - uses: actions/checkout@v4
-        if: github.event_name != 'pull_request_target'
 
       - name: Setup OPA
         uses: open-policy-agent/setup-opa@v2
