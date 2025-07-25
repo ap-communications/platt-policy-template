@@ -14,6 +14,12 @@ _make_action_rule(rule, params) := {
 	"params": params,
 }
 
+_make_task_rule(rule, params) := {
+	"resourceType": "scaffolder-task",
+	"rule": rule,
+	"params": params,
+}
+
 # tag: Name of the tag to match on
 has_tag(tag) := _make_scaffolder_rule(
 	"HAS_TAG",
@@ -54,4 +60,9 @@ has_string_property(key, value) := _make_action_rule(
 		"key": key,
 		"value": value,
 	},
+)
+
+is_task_owner(array_owners) := _make_task_rule(
+	"IS_TASK_OWNER",
+	{"createdBy": array_owners},
 )

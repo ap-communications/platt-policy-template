@@ -48,3 +48,11 @@ test_has_string_property if {
 	string_prop.params.key == key
 	string_prop.params.value == value
 }
+
+test_is_task_owner if {
+	owners := ["owner1", "owner2"]
+	task_owner := scaffolder.is_task_owner(owners)
+	task_owner.resourceType == "scaffolder-task"
+	task_owner.rule == "IS_TASK_OWNER"
+	task_owner.params.createdBy == owners
+}
