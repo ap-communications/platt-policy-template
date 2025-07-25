@@ -10,7 +10,7 @@ import rego.v1
 test_catalog_read_is_conditional_allow if {
 	identity := test_utils.user_identity("test_user", ["group:default/VendorX"])
 
-	expected_result := catalog.result_catalog_conditionional(catalog.is_entity_owner("grouop:default/TeamA"))
+	expected_result := catalog.result_catalog_conditional(catalog.is_entity_owner("group:default/TeamA"))
 
 	every permission in catalog.read_permissions {
 		vendor_x.decision == expected_result with input as _create_input(permission, identity)

@@ -5,7 +5,7 @@ import data.rbac.backstage.global
 import data.rbac.backstage.scaffolder
 import rego.v1
 
-decision := catalog.result_catalog_conditionional(catalog.is_entity_owner("grouop:default/TeamB")) if {
+decision := catalog.result_catalog_conditional(catalog.is_entity_owner("group:default/TeamB")) if {
 	_is_vender_y(input.identity.claims)
 	input.permission.name in catalog.read_permissions
 } else := global.result_allow if {

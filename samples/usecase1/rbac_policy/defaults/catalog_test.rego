@@ -23,7 +23,7 @@ test_catalog_create_decision_allow if {
 test_catalog_delete_decision_conditional if {
 	every permission in catalog.delete_permissions {
 		identity := test_utils.user_identity("test_user", ["group:default/dev_team_1"])
-		expected_result := catalog.result_catalog_conditionional(catalog.is_entity_owner(identity.claims))
+		expected_result := catalog.result_catalog_conditional(catalog.is_entity_owner(identity.claims))
 		defaults.decision == expected_result with input as test_utils.create_input(permission, identity)
 	}
 }
