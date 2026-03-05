@@ -11,4 +11,5 @@ To use the template, you will need the following tools:
   - [Home brew](https://formulae.brew.sh/formula/opa)
   - [Install Binaries(Windows/Mac/Linux)](https://github.com/open-policy-agent/opa/releases)
 - [Regal (Rego Linter)](https://docs.styra.com/regal)
+  - [Home brew](https://formulae.brew.sh/formula/regal)
   - [Download](https://docs.styra.com/regal#download-regal)
